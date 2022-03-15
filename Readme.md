@@ -9,6 +9,7 @@ Get your API-credentials from [developer.twitter.com](https://developer.twitter.
 ```bash
 nano ./tweet-analyzer-pipeline/tweet_collector/src/twitter_cred.py
 # Enter your credentials and save file with ctrl-x
+# Limit is set to 200 tweets
 ```
 ### 4. Enter your preferred tweet-query:
 ```bash

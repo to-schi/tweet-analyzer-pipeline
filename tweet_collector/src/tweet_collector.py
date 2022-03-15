@@ -7,6 +7,7 @@ import re
 
 # This example collects tweets with the hashtag "djokovic". Retweets are discarded.
 query = '#djokovic -is:retweet'
+limit = 200
 
 def connect_mongodb():
     HOST = 'tweet_mongodb' # 127.0.0.1   0.0.0.0
@@ -71,7 +72,7 @@ def data_cleaning(tweet):
     tweet = remove_emoji(tweet)
     return tweet
 
-def get_tweets(query):
+def get_tweets(query, limit):
     client = tw.Client(bearer_token=BEARER_TOKEN,consumer_key=API_KEY,consumer_secret=API_KEY_SECRET, access_token=ACCESS_TOKEN,access_token_secret=ACCESS_TOKEN_SECRET)
     if client:
         logging.critical("\nAutentication OK")
@@ -80,7 +81,7 @@ def get_tweets(query):
     db_tweets = connect_mongodb().tweets # creates database tweets_collection
     tweets = db_tweets.tweets_collection
 
-    paginator = tw.Paginator(client.search_recent_tweets, tweet_fields=['lang','id','created_at','text'], query=query).flatten(limit=200)
+    paginator = tw.Paginator(client.search_recent_tweets, tweet_fields=['lang','id','created_at','text'], query=query).flatten(limit=limit)
     for tweet in paginator:
         if tweet['lang']=='en':
             text = data_cleaning(tweet.text)+" "
@@ -94,4 +95,4 @@ def get_tweets(query):
                 logging.critical('-----Tweet being written into MongoDB-----')
 
 time.sleep(2)
-get_tweets(query)
+get_tweets(query, limit)
