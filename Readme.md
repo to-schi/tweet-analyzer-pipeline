@@ -11,18 +11,17 @@ nano ./tweet-analyzer-pipeline/tweet_collector/src/twitter_cred.py
 # Enter your credentials and save file with ctrl-x
 # Limit is set to 200 tweets
 ```
-### 4. Enter your preferred tweet-query:
+### 3. Enter your preferred tweet-query:
 ```bash
 nano ./tweet-analyzer-pipeline/tweet_collector/src/tweet_collector.py
 # Insert query-text in line 9: "query = '#SOME_PHRASE'" and save file with ctrl-x
 ```
-### 5. Insert the webhook-url to your slack-channel:
+### 4. Insert the webhook-url to your slack-channel:
 ```bash
 nano ./tweet-analyzer-pipeline/tweet_slack/src/conf.py
 # Insert webhook-url and save file with ctrl-x
 ```
-
-### 6. Change directory and start docker:
+### 5. Change directory and start docker:
 ```bash
 cd tweet-analyzer-pipeline
 sudo docker-compose up
