@@ -1,0 +1,46 @@
+version: '3'
+services:
+
+  tweet_mongodb:
+    container_name: tweet_mongodb
+    image: mongo
+    ports:
+    - 27017:27017
+
+  tweet_collector:
+    container_name: tweet_collector
+    build: tweet_collector/
+    volumes:
+    - ./tweet_collector/src:/app
+    links:
+    - tweet_mongodb
+
+  tweet_postgres:
+    image: postgres:13.0
+    container_name: tweet_postgres
+    ports:
+      - 5555:5432
+      # Port OUTSIDE Container:Port INSIDE Container
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=tweets
+      - LOCALE=en_US.UTF-8
+      
+  tweet_etl:
+    container_name: tweet_etl
+    build: tweet_etl/
+    
+    volumes:
+      - ./tweet_etl/src:/app
+    depends_on:
+      - tweet_postgres
+      - tweet_mongodb
+
+  tweet_slack:
+    build: tweet_slack/
+    container_name: tweet_slack
+    volumes:
+      - ./tweet_slack/src:/app
+    depends_on:
+      - tweet_postgres
