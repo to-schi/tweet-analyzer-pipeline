@@ -13,7 +13,7 @@ nano ./tweet-analyzer-pipeline/tweet_collector/src/twitter_cred.py
 ### 4. Enter your preferred tweet-query:
 ```bash
 nano ./tweet-analyzer-pipeline/tweet_collector/src/tweet_collector.py
-# Insert query-text in line 9 "query = ' '" and save file with ctrl-x
+# Insert query-text in line 9: "query = '#SOME_PHRASE'" and save file with ctrl-x
 ```
 ### 5. Insert the webhook-url to your slack-channel:
 ```bash
