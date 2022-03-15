@@ -7,17 +7,17 @@ git clone https://github.com/to-schi/tweet-analyzer-pipeline.git
 ### 2. Enter your credentials in "twitter_cred.py":
 Get your API-credentials from [developer.twitter.com](https://developer.twitter.com).
 ```bash
-nano ./twitter-analyzer-pipeline/tweet-collector/src/twitter_cred.py
+nano ./tweet-analyzer-pipeline/tweet_collector/src/twitter_cred.py
 # Enter your credentials and save file with ctrl-x
 ```
 ### 4. Enter your preferred tweet-query:
 ```bash
-nano ./twitter-analyzer-pipeline/tweet-collector/src/tweet_collector.py
+nano ./tweet-analyzer-pipeline/tweet_collector/src/tweet_collector.py
 # Insert query-text in line 9 "query = ' '" and save file with ctrl-x
 ```
 ### 5. Insert the webhook-url to your slack-channel:
 ```bash
-nano ./twitter-analyzer-pipeline/slackbot/src/conf.py
+nano ./tweet-analyzer-pipeline/tweet_slack/src/conf.py
 # Insert webhook-url and save file with ctrl-x
 ```
 
