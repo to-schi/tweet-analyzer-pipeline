@@ -33,4 +33,4 @@ tweet_mongodb, tweet_collector, tweet_postgres, tweet_etl, and tweet_slack.
 
 &nbsp;
 
-This project was part of the [Spiced Academy](https://www.spiced-academy.com) Data Science Bootcamp Nov/2021.
+This project was created during the [Spiced Academy](https://www.spiced-academy.com) Data Science Bootcamp Nov/2021.
